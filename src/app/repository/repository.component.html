@@ -1,0 +1,59 @@
+<div class="form-group w-50 mx-auto p-4  my-4 rounded">
+    <label class="form-label text-center text-danger w-100" for="repo"> Enter repository name</label>
+    <input class="form-control bg-transparent" type="text" id="repo "(keyup)="searchReposa()" name="term" [(ngModel)]="term">
+</div>
+
+
+<div class="repo ">
+<div class="temp p-4  "*ngFor=" let repo of repos"  >
+    <div *ngIf="repo"  class="top" >
+        <div class="im">
+            <p class="bg-warning p-3"><strong>Repository Name: <span class="text-success">{{repo.name}}</span></strong></p>
+            <hr>
+        <div class="hrz ">
+            <div class="ina">
+                <img src="{{repo.owner.avatar_url}}"  alt="">
+            </div>
+            <div class="icos text-align-center">
+                <p><strong><i class="fa-solid fa-code-fork text-warning me-2"></i></strong> <span class="text-light ">{{repo.forks}}</span></p>
+                <p><strong><i class="fa-regular fa-clock text-warning me-2"></i></strong> <span class="text-light">{{repo.created_at|date}}</span></p>
+                <p><strong><i class="fa-regular fa-eye text-warning me-2"></i></strong> <span class="text-light">{{repo.visibility}}</span></p>
+
+
+
+            </div>
+        </div>
+            <P *ngIf="repo.owner.login"> <strong>0wner</strong><span class="text-success ms-3">{{repo.owner.login}}</span></P>
+            <p><strong class="text-success">updated</strong> <span class="text-danger ms-2">{{repo.updated_at|date|timeCount}}</span></p>
+
+        </div>
+
+       
+       
+    </div>
+    <div class="body">
+        <div class="des mb-5 bg-light rounded p-4" *ngIf="repo.description">
+            <h6 class="text-center text-success">Description</h6>
+            <p class="text-danger"  >{{repo.description}}</p>
+        </div>
+
+
+    </div>
+    <div class="down bg-info p-3 d-flex justify-content-around">
+       <div class="lef">
+        <p><strong class="text-danger me-2">Languages</strong><span class="text-light">{{repo.language}}</span></p>
+        <p *ngIf="repo.license"><strong class="text-danger ">LIC<i class="fa-regular fa-id-card text-danger me-4 ms-1"></i></strong><span class="text-light">{{repo.license.key|uppercase}}</span></p>
+        <a class="btn btn-outline-light" target="blank"  href="{{repo.html_url}}">view repo</a>
+
+       </div>
+    <div class="righ">
+    <div class="dp my-4"><a href="{{repo.deployments_url}}" target="blank">Deployments</a></div>
+    <div class="dp"><a href="{{repo.clone_url}}" target="blank">Clone</a></div>
+        
+
+    </div>
+
+    </div>
+
+</div>
+</div>
